@@ -47,8 +47,8 @@ class ReservationController extends Controller
      */
     public function show($id)
     {
-        $reservations = Reservation::findOrFail($id);
-        dd($reservations);
+        $reservation = Reservation::findOrFail($id);
+        return view('reservations.show', compact('reservation'));
     }
 
     /**

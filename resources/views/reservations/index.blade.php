@@ -2,7 +2,8 @@
 
 
 @section('content')
-<table class="table table-striped mt-5">
+<a href="{{route('reservations.create')}}" class="btn btn-primary mt-5">Add</a>
+<table class="table table-striped mt-3">
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -11,6 +12,7 @@
       <th scope="col">Check-out date</th>
       <th scope="col">Adults</th>
       <th scope="col">Children</th>
+      <th>Actions</th>
       
     </tr>
   </thead>
@@ -23,6 +25,10 @@
         <td>{{$reservation->check_out_date}}</td>
         <td>{{$reservation->adults}}</td>
         <td>{{$reservation->children}}</td>
+        <td>
+          <a class="btn btn-outline-primary" href="{{route('reservations.show', ['reservation' => $reservation->id])}}">Details</a>
+          <a class="btn btn-outline-primary" href="{{route('reservations.edit', ['reservation' => $reservation->id])}}">Edit</a>
+        </td>
     </tr>
     @endforeach
   </tbody>

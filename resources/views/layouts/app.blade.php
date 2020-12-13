@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Hotel reservations system</title>
   </head>
   <body>
     <!-- navbar -->
@@ -23,28 +23,28 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/users">Users</a>
+            <a class="nav-link" href="{{route('users.index')}}">Users</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/roles">Roles</a>
+            <a class="nav-link" href="{{route('roles.index')}}">Roles</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/guests">Guests</a>
+            <a class="nav-link" href="{{route('guests.index')}}">Guests</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/payments">Payments</a>
+            <a class="nav-link" href="{{route('payments.index')}}">Payments</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/reservations">Reservations</a>
+            <a class="nav-link" href="{{route('reservations.index')}}">Reservations</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/rooms">Rooms</a>
+            <a class="nav-link" href="{{route('rooms.index')}}">Rooms</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/room_statuses">Room statuses</a>
+            <a class="nav-link" href="{{route('room_statuses.index')}}">Room statuses</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/room_types">Room types</a>
+            <a class="nav-link" href="{{route('room_types.index')}}">Room types</a>
         </li>
         </ul>
     </div>

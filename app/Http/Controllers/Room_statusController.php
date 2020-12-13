@@ -47,8 +47,8 @@ class Room_statusController extends Controller
      */
     public function show($id)
     {
-        $room_statuses = Room_status::findOrFail($id);
-        dd($room_statuses);
+        $room_status = Room_status::findOrFail($id);
+        return view('room_statuses.show', compact('room_status'));
     }
 
     /**

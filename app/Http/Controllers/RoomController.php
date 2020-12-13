@@ -47,8 +47,8 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $rooms =Room::findOrFail($id);
-        dd($rooms);
+        $room =Room::findOrFail($id);
+        return view('rooms.show', compact('room'));
     }
 
     /**

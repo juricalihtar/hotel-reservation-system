@@ -2,7 +2,8 @@
 
 
 @section('content')
-<table class="table table-striped mt-5">
+<a href="{{route('guests.create')}}" class="btn btn-primary mt-5">Add</a>
+<table class="table table-striped mt-3">
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -13,6 +14,7 @@
       <th scope="col">Address</th>
       <th scope="col">City</th>
       <th scope="col">Country</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -26,7 +28,10 @@
         <td>{{$guest->address}}</td>
         <td>{{$guest->city}}</td>
         <td>{{$guest->country}}</td>
-        <td></td>
+        <td>
+          <a class="btn btn-outline-primary" href="{{route('guests.show', ['guest' => $guest->id])}}">Details</a>
+          <a class="btn btn-outline-primary" href="{{route('guests.edit', ['guest' => $guest->id])}}">Edit</a>
+        </td>
         <td></td>
     </tr>
     @endforeach

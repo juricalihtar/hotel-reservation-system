@@ -48,8 +48,8 @@ class GuestController extends Controller
     public function show($id)
     {
         
-        $guests = Guest::findOrFail($id);
-        dd($guests);
+        $guest = Guest::findOrFail($id);
+        return view('guests.show', compact('guest'));
   
     }
 

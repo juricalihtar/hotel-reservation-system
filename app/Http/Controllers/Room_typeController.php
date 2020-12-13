@@ -47,8 +47,8 @@ class Room_typeController extends Controller
      */
     public function show($id)
     {
-        $room_types = Room_types::findOrFail($id);
-        dd($room_types);
+        $room_type = Room_type::findOrFail($id);
+        return view('room_types.show', compact('room_type'));
     }
 
     /**
