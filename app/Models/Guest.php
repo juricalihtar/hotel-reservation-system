@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Guest extends Model
 {
     use HasFactory;
-
+ 
     protected $fillable = [
         'first_name',
         'last_name',
@@ -18,4 +18,7 @@ class Guest extends Model
         'city',
         'country'
     ];
+
+    public function payments() { return $this->hasMany(Payments::class);}
+    public function reservations() { return $this->hasMany(Reservation::class);}
 }

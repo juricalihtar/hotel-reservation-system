@@ -8,6 +8,8 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Number</th>
+      <th scope="col">Room status</th>
+      <th scope="col">Room type</th>
       <th>Actions</th>
       
       
@@ -18,6 +20,8 @@
     <tr>
         <td>{{$room->id}}</td>
         <td>{{$room->number}}</td>
+        <td>{{$room->room_status->room_status_name}}</td>
+        <td>{{$room->room_type->room_type_name}}</td>
         <td>
           <a class="btn btn-outline-primary" href="{{route('rooms.show', ['room' => $room->id])}}">Details</a>
           <a class="btn btn-outline-primary" href="{{route('rooms.edit', ['room' => $room->id])}}">Edit</a>

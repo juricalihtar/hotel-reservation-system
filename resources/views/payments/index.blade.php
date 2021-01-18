@@ -8,6 +8,11 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Payment method</th>
+      <th scope="col">Reservation ID</th>
+      <th scope="col">Guest first name</th>
+      <th scope="col">Guest last name</th>
+
+      
       <th>Actions</th>
       
       
@@ -18,6 +23,10 @@
     <tr>
         <td>{{$payment->id}}</td>
         <td>{{$payment->payment_method}}</td>
+        <td>{{$payment->reservation->id}}</td>
+        <td>{{$payment->guest->first_name}}</td>
+        <td>{{$payment->guest->last_name}}</td>
+        
         <td>
           <a class="btn btn-outline-primary" href="{{route('payments.show', ['payment' => $payment->id])}}">Details</a>
           <a class="btn btn-outline-primary" href="{{route('payments.edit', ['payment' => $payment->id])}}">Edit</a>

@@ -12,4 +12,6 @@ class Room_status extends Model
         'room_status_name'
         
     ];
+
+    public function rooms() { return $this->hasMany(Room::class);}
 }

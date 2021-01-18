@@ -10,10 +10,19 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'resrevation_date',
+        'reservation_date',
         'check_in_date',
         'check_out_date',
         'adults',
-        'children'
+        'children',
+        'guest_id',
+        'room_id',
+        'user_id'
     ];
+
+    public function payments() { return $this->hasMany(Payment::class);}
+    public function user() { return $this->belongsTo(User::class);}
+    public function room() { return $this->belongsTo(Room::class);}
+    public function guest() { return $this->belongsTo(Guest::class);}
+    
 }

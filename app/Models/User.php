@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
@@ -28,10 +29,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password'
+        
     ];
 
+    /* 
+        Definiranje svih one to many veza
+    */
+    public function role() { return $this->belongsTo(Role::class);}
+    public function reservations() { return $this->hasMany(Reservation::class);}
     /**
      * The attributes that should be cast to native types.
      *
@@ -40,4 +46,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

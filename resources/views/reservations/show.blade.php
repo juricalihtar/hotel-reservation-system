@@ -10,9 +10,9 @@
         <li>Check-out date: {{ $reservation->check_out_date }}</li>
         <li>Adults: {{ $reservation->adults }}</li>
         <li>Children: {{ $reservation->children }}</li>
-        <li>User ID: {{ $reservation->user_id }}</li>
-        <li>Guest ID: {{ $reservation->guest_id }}</li>
-        <li>Room ID: {{ $reservation->room_id }}</li>
+        <li>Room number: {{$reservation->room->number}}</li>
+        <li>Guest: {{$reservation->guest->first_name}} {{$reservation->guest->last_name}}</li>
+        <li>Employee: {{$reservation->user->name}}</li>
     </ul>
     <a href="{{ route ('reservations.index')}}" class="btn btn-outline-primary">Back</a>
     </div>

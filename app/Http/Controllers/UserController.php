@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Hash;
+
+
 
 class UserController extends Controller
 {
@@ -14,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users =User::paginate();
+        $users =User::with(['role'])->paginate();
         return view('users.index', compact('users'));
     }
 
@@ -25,7 +32,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::pluck('name', 'id');
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -36,7 +44,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|unique|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:7|confirmed',
+            'role_id' => 'required'
+    
+        ]);
+        $user = User::create($validated);
+        $validated['password'] = Hash::make($validated['password']);
+        
+        return view('users.show', compact('user'));
+
     }
 
     /**
@@ -47,7 +66,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with(['role'])->findOrFail($id);
         return view('users.show', compact('user'));
     }
 
@@ -59,7 +78,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $roles = Role::pluck('name', 'id');
+
+        return view('users.edit',
+            compact('user', 'roles')
+        );
     }
 
     /**
@@ -71,7 +96,17 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'role_id' => 'required'
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->fill($validated);
+        $user->save();
+
+        return view('users.show', compact('user'));
     }
 
     /**

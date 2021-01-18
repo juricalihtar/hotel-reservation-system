@@ -21,17 +21,28 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/* ovo su rute gdje korisnik MORA biti prijavljen da bi im pristupio */
+Route::middleware(['auth'])->group(function () {
+
+    /* homepage, primjetiti ->name('home') na kraju */
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('home');
+
+    // ::post, ::post, ::patch, ::delete
+
+    Route::resource('guests', GuestController::class);
+    Route::resource('payments', PaymentController::class);
+    Route::resource('reservations', ReservationController::class);
+    Route::resource('roles', RoleController::class);
+    Route::resource('room_statuses', Room_statusController::class);
+    Route::resource('room_types', Room_typeController::class);
+    Route::resource('rooms', RoomController::class);
+    Route::resource('users', UserController::class);
+
 });
 
-// ::post, ::post, ::patch, ::delete
+    /* ovdje su rute za login, registraciju, change password, itd. */
 
-Route::resource('guests', GuestController::class);
-Route::resource('payments', PaymentController::class);
-Route::resource('reservations', ReservationController::class);
-Route::resource('roles', RoleController::class);
-Route::resource('room_statuses', Room_statusController::class);
-Route::resource('room_types', Room_typeController::class);
-Route::resource('rooms', RoomController::class);
-Route::resource('users', UserController::class);
+    require __DIR__.'/auth.php';
+

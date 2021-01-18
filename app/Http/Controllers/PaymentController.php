@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Payment;
+use App\Models\Reservation;
+use App\Models\Guest;
 
 class PaymentController extends Controller
 {
@@ -14,7 +16,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $payments = Payment::paginate();
+        $payments =Payment::with(['guest', 'reservation'])->paginate();
         return view('payments.index', compact('payments'));
     }
 
@@ -25,7 +27,10 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        $reservations = Reservation::pluck('id', 'id');
+        $guests = Guest::pluck('first_name','id');
+
+        return view('payments.create', compact('reservations', 'guests'));
     }
 
     /**
@@ -36,7 +41,15 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'payment_method' => 'required',
+            'reservation_id' => 'required',
+            'guest_id' => 'required'
+        ]);
+
+        $payment = Payment::create($validated);
+
+        return view('payments.show', compact('payment'));
     }
 
     /**
@@ -59,7 +72,12 @@ class PaymentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $payment = Payment::findOrFail($id);
+
+        $reservations = Reservation::pluck('id', 'id');
+        $guests = Guest::pluck('first_name','id');
+
+        return view('payments.edit', compact('payment', 'reservations', 'guests'));
     }
 
     /**
@@ -71,7 +89,17 @@ class PaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'payment_method' => 'required',
+            'reservation_id' => 'required',
+            'guest_id' => 'required'
+        ]);
+
+        $payment = Payment::findOrFail($id);
+        $payment->fill($validated);
+        $payment->save();
+
+        return view('payments.show', compact('payment'));
     }
 
     /**

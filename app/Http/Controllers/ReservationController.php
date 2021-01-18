@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reservation;
+use App\Models\Guest;
+use App\Models\Room;
+use App\Models\User;
+
 
 class ReservationController extends Controller
 {
@@ -14,7 +18,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::paginate();
+        $reservations = Reservation::with(['guest', 'room', 'user'])->paginate();
         return view('reservations.index', compact('reservations'));
     }
 
@@ -25,7 +29,11 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+        $guests = Guest::pluck('first_name', 'id');
+        $rooms = Room::pluck('number', 'id');
+        $users = User::pluck('name', 'id');
+
+        return view('reservations.create', compact('guests', 'rooms', 'users'));
     }
 
     /**
@@ -36,7 +44,20 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'reservation_date' => 'required',
+            'check_in_date' => 'required',
+            'check_out_date' => 'required',
+            'adults' => 'required',
+            'children' => 'required',
+            'guest_id' => 'required',
+            'room_id' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        $reservation = Reservation::create($validated);
+
+        return view('reservations.show', compact('reservation'));
     }
 
     /**
@@ -59,7 +80,14 @@ class ReservationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reservation = Reservation::findOrFail($id);
+
+        
+        $rooms = Room::pluck('number', 'id');
+
+        return view('reservations.edit',
+            compact('reservation', 'rooms')
+        );
     }
 
     /**
@@ -71,7 +99,20 @@ class ReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'check_in_date' => 'required',
+            'check_out_date' => 'required',
+            'adults' => 'required',
+            'children' => 'required',
+            'room_id' => 'required'
+        ]);
+
+        $reservation = Reservation::findOrFail($id);
+        $reservation->fill($validated);
+        $reservation->save();
+
+        return view('reservations.show', compact('reservation'));
+
     }
 
     /**
