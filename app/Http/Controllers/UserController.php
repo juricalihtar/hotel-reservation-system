@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 
-use App\Providers\RouteServiceProvider;
+
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
-use Illuminate\Support\Facades\Auth;
+
 use Hash;
 
 
@@ -45,14 +45,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|unique|max:255',
+            'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:7|confirmed',
             'role_id' => 'required'
     
         ]);
-        $user = User::create($validated);
+        
         $validated['password'] = Hash::make($validated['password']);
+        $user = User::create($validated);
         
         return view('users.show', compact('user'));
 

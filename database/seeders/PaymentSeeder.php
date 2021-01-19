@@ -17,7 +17,7 @@ class PaymentSeeder extends Seeder
     {
         DB::table('payments')->insert([
             'payment_method' => 'Cash', 
-            'reservation_id' => 3, 
+            'reservation_id' => 1, 
             'guest_id' => 1,
             
             
