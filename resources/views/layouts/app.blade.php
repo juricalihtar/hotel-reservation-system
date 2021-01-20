@@ -1,3 +1,7 @@
+@php
+$currentUser = \Auth::user();
+@endphp
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -102,7 +106,7 @@
         }
     </script>
     <footer class="bg-light w-100 text-center position-fixed pt-3">
-        <small>Powered by <a href="https://www.google.com/search?q=zapravo prevara" target="_blank">Nije prevara d.o.o.</a></small>
+        <small>Copyright <a href="https://www.google.com/search?q=zapravo prevara" target="_blank">Jurica Lihtar</a></small>
     </footer>
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
