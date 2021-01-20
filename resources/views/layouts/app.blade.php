@@ -106,7 +106,7 @@ $currentUser = \Auth::user();
         }
     </script>
     <footer class="bg-light w-100 text-center position-fixed pt-3">
-        <small>Copyright <a href="https://www.google.com/search?q=zapravo prevara" target="_blank">Jurica Lihtar</a></small>
+        <small><a href="https://www.csusa.org/page/Definitions" target="_blank">Copyright Ⓒ Jurica Lihtar 2021.</a></small>
     </footer>
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
