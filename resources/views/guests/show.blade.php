@@ -11,6 +11,7 @@
         <li>Phone number: {{$guest->phone_number}}</li>
         <li>Address: {{$guest->address}}</li>
         <li>City: {{$guest->city}}</li>
+        <li>City: {{$guest->country}}</li>
     </ul>
     
     </div>
