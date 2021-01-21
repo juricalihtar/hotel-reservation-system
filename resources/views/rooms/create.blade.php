@@ -11,12 +11,11 @@
         <!-- number -->
         <div class="form-group">
         <label for="number">Number</label>
-        <input value="{{ @old('number') }}" name="number" type="text" class="form-control" id="number">
+        <input value="{{ @old('number') }}" name="number" type="number" class="form-control" id="number">
         @if ($errors->has('number'))
             <span class="text-danger">{{ $errors->first('number') }}</span>
         @endif
         </div>
-
 
         <div class="form-group">
                 <label for="room_type">Room type</label>

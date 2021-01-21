@@ -10,6 +10,7 @@
       <th scope="col">Number</th>
       <th scope="col">Room status</th>
       <th scope="col">Room type</th>
+      <th scope="col">Price</th>
       <th>Actions</th>
       
       
@@ -22,6 +23,7 @@
         <td>{{$room->number}}</td>
         <td>{{$room->room_status->room_status_name}}</td>
         <td>{{$room->room_type->room_type_name}}</td>
+        <td>{{$room->room_type->base_price}}€</td>
         <td>
           <a class="btn btn-outline-primary" href="{{route('rooms.show', ['room' => $room->id])}}">Details</a>
           <a class="btn btn-outline-primary" href="{{route('rooms.edit', ['room' => $room->id])}}">Edit</a>
