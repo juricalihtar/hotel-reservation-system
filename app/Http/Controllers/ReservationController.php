@@ -123,6 +123,10 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        /* primjer upita kojeg generira linija ispod: DELETE FROM countries WHERE id = 1 */
+        Reservation::destroy($id);
+
+        /* nakon brisanja, napravi redirect na index stranicu */
+        return redirect()->route('reservations.index');
     }
 }

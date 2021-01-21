@@ -14,8 +14,20 @@
         <li>Guest: {{$reservation->guest->first_name}} {{$reservation->guest->last_name}}</li>
         <li>Employee: {{$reservation->user->name}}</li>
     </ul>
-    <a href="{{ route ('reservations.index')}}" class="btn btn-outline-primary">Back</a>
     </div>
+
+    <div class="btn-group" role="group">
+<a class="btn btn-secondary" href="{{ route('reservations.index') }}">Back</a>
+
+<a class="btn btn-primary" href="{{ route('reservations.edit', ['reservation' => $reservation]) }}">Edit</a>
+
+<form class="form-inline" action="{{ route('reservations.destroy', ['reservation' => $reservation->id]) }}" method="POST">
+    <!-- CSRF token -->
+    @csrf
+    @method('DELETE')
+    <button type="submit" onclick="areYouSure(event)" class="btn btn-danger">Delete</button>
+</form>
+</div>
 @endsection
  
 

@@ -110,6 +110,10 @@ class GuestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        /* primjer upita kojeg generira linija ispod: DELETE FROM countries WHERE id = 1 */
+        Guest::destroy($id);
+
+        /* nakon brisanja, napravi redirect na index stranicu */
+        return redirect()->route('guests.index');
     }
 }

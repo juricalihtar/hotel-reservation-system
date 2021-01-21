@@ -10,8 +10,20 @@
         <li>Guest first name: {{$payment->guest->first_name}}</li>
         <li>Guest last name: {{$payment->guest->last_name}}</li>
     </ul>
-    <a href="{{ route ('payments.index')}}" class="btn btn-outline-primary">Back</a>
+    
     </div>
+    <div class="btn-group" role="group">
+<a class="btn btn-secondary" href="{{ route('payments.index') }}">Back</a>
+
+<a class="btn btn-primary" href="{{ route('payments.edit', ['payment' => $payment]) }}">Edit</a>
+
+<form class="form-inline" action="{{ route('payments.destroy', ['payment' => $payment->id]) }}" method="POST">
+    <!-- CSRF token -->
+    @csrf
+    @method('DELETE')
+    <button type="submit" onclick="areYouSure(event)" class="btn btn-danger">Delete</button>
+</form>
+</div>
 @endsection
  
   

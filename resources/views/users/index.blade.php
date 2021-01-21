@@ -23,7 +23,7 @@
         <td>{{$user->email}}</td>
         <td>{{$user->password}}</td>
         <td>{{$user->role->name}}</td>
-        <td>
+        <td class="text-center">
           <a class="btn btn-outline-primary" href="{{route('users.show', ['user' => $user->id])}}">Details</a>
           <a class="btn btn-outline-primary" href="{{route('users.edit', ['user' => $user->id])}}">Edit</a>
           <a class="btn btn-outline-primary" href="{{ route('change_password.edit', ['user' => $user->id]) }}">Change password</a>
@@ -34,6 +34,9 @@
     @endforeach
   </tbody>
 </table>
+<div class="d-flex justify-content-center">
+        {{ $users->links() }}
+  </div>
 @endsection
 
     
