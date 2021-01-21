@@ -15,5 +15,5 @@ php artisan serve
 
 ## Login credentials
 
-* Admin account: admin@admin.com / admin
-* User account: user@user.com / user
+* Admin account: admin@admin.com / admin123
+* User account: user@user.com / user123
