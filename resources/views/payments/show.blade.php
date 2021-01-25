@@ -9,6 +9,7 @@
         <li>Reservation ID: {{$payment->reservation->id}}</li>
         <li>Guest first name: {{$payment->guest->first_name}}</li>
         <li>Guest last name: {{$payment->guest->last_name}}</li>
+        <li>Price: {{$payment->reservation->room->room_type->base_price}}€</li>
     </ul>
     
     </div>

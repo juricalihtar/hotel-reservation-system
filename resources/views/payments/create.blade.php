@@ -10,7 +10,7 @@
 
         <!-- payment_method -->
         <div class="form-group">
-        <label for="payment_method">payment_method</label>
+        <label for="payment_method">Payment method</label>
         <select value="{{ @old('payment_method') }}" name="payment_method" type="text" class="form-control" id="payment_method">
                 <option>Cash</option>
                 <option>Credit card</option> 

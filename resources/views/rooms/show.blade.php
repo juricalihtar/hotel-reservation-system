@@ -8,6 +8,7 @@
         <li>Number: {{ $room->number }}</li>
         <li>Room status: {{ $room->room_status->room_status_name}}</li>
         <li>Room type: {{ $room->room_type->room_type_name}}</li>
+        <li>Price: {{ $room->room_type->base_price}}€</li>
     </ul>
     </div>
 

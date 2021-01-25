@@ -15,6 +15,7 @@
       <th scope="col">Room number</th>
       <th scope="col">Guest</th>
       <th scope="col">Employee</th>
+
       <th>Actions</th>
       
     </tr>

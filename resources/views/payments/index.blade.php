@@ -11,6 +11,7 @@
       <th scope="col">Reservation ID</th>
       <th scope="col">Guest first name</th>
       <th scope="col">Guest last name</th>
+      <th scope="col">Price</th>
 
       
       <th>Actions</th>
@@ -26,6 +27,8 @@
         <td>{{$payment->reservation->id}}</td>
         <td>{{$payment->guest->first_name}}</td>
         <td>{{$payment->guest->last_name}}</td>
+        <td>{{$payment->reservation->room->room_type->base_price}}€</td>
+
         
         <td>
           <a class="btn btn-outline-primary" href="{{route('payments.show', ['payment' => $payment->id])}}">Details</a>
